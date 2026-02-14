@@ -1,0 +1,19 @@
+
+{
+  "name": "ZenStep Podomètre",
+  "short_name": "ZenStep",
+  "description": "Podomètre intelligent, élégant et autonome.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3842/3842323.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

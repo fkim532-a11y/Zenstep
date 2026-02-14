@@ -1,0 +1,7 @@
+{
+  "name": "ZenStep - Podomètre Personnel",
+  "description": "Une application de podomètre moderne et privée qui respecte vos données.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
