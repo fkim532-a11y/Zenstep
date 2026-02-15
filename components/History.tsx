@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { DailyStats } from '../types';
 
 interface Props {
@@ -34,12 +34,18 @@ const HistoryView: React.FC<Props> = ({ history, isDark }) => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-sm overflow-hidden">
         <h4 className="font-bold text-gray-900 dark:text-white mb-6 px-2">Activité des 7 derniers jours</h4>
-        <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: isDark ? '#64748b' : '#94a3b8' }} dy={10} />
+        <div className="h-64 w-full min-w-0 relative">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
+            <BarChart data={chartData} margin={{ top: 10, right: 10, left: 10, bottom: 20 }}>
+              <XAxis 
+                dataKey="name" 
+                axisLine={false} 
+                tickLine={false} 
+                tick={{ fontSize: 12, fill: isDark ? '#64748b' : '#94a3b8' }} 
+                dy={10} 
+              />
               <Tooltip 
                 cursor={{ fill: 'transparent' }}
                 content={({ active, payload }) => {
@@ -56,7 +62,10 @@ const HistoryView: React.FC<Props> = ({ history, isDark }) => {
               />
               <Bar dataKey="steps" radius={[10, 10, 10, 10]} barSize={32}>
                 {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={index === chartData.length - 1 ? (isDark ? '#34d399' : '#10b981') : (isDark ? '#1e293b' : '#e2e8f0')} />
+                  <Cell 
+                    key={`cell-${index}`} 
+                    fill={index === chartData.length - 1 ? (isDark ? '#34d399' : '#10b981') : (isDark ? '#1e293b' : '#e2e8f0')} 
+                  />
                 ))}
               </Bar>
             </BarChart>

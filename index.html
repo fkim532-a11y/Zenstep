@@ -30,14 +30,15 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-tap-highlight-color: transparent;
             overscroll-behavior-y: contain;
-            /* Empêche le rebond élastique sur iOS/Android */
+            background-color: #f9fafb;
         }
-        .step-gradient {
-            background: linear-gradient(135deg, #4ade80 0%, #22d3ee 100%);
-        }
-        /* Masquer la scrollbar */
+        .dark body { background-color: #020617; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Protection pour l'encoche (notch) des smartphones */
+        .pt-safe { padding-top: env(safe-area-inset-top); }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
     </style>
 <script type="importmap">
 {
@@ -53,10 +54,12 @@
 </head>
 <body class="bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
     <div id="root"></div>
+    <!-- CHARGEMENT DE L'APPLICATION -->
+    <script type="module" src="./index.tsx"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then(reg => console.log('ZenStep Ready Offline'))
                     .catch(err => console.log('SW failure', err));
             });

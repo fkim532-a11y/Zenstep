@@ -1,27 +1,29 @@
 
-# 🚶 ZenStep - Podomètre Mobile Web
+# 🚶 ZenStep - Podomètre Mobile Web (PWA)
 
-ZenStep est une application de podomètre minimaliste et élégante, conçue pour fonctionner directement dans votre navigateur mobile ou être installée comme une **PWA (Progressive Web App)**.
+ZenStep est une application de podomètre minimaliste, élégante et privée, conçue pour fonctionner comme une **Progressive Web App (PWA)**.
 
-## ✨ Pourquoi ZenStep ?
-- **100% Privé** : Vos données de pas ne quittent jamais votre téléphone. Tout est stocké localement.
-- **Économe** : Pas de GPS gourmand, utilise uniquement l'accéléromètre.
-- **Design Premium** : Interface inspirée des meilleures apps de fitness modernes.
-- **Zéro Simulation** : Compte vos vrais pas basés sur le mouvement réel.
+## 🚀 Comment l'installer sur votre Smartphone
 
-## 🚀 Utilisation
-1. Ouvrez l'application sur votre smartphone.
-2. Cliquez sur **"Démarrer le suivi"**.
-3. Autorisez l'accès aux capteurs de mouvement si demandé.
-4. Glissez votre téléphone dans votre poche et marchez !
+### Étape 1 : Hébergement avec GitHub Pages
+1. Créez un dépôt GitHub et téléversez tous les fichiers du projet.
+2. Allez dans **Settings** > **Pages**.
+3. Choisissez la branche `main` et le dossier `/root`, puis cliquez sur **Save**.
+4. Notez l'URL générée (ex: `https://votre-pseudo.github.io/votre-depot/`).
 
-## 📦 Installation
-Pour l'installer comme une application native :
-- **Sur Android** : Menu Chrome (3 points) > "Installer l'application".
-- **Sur iOS** : Bouton Partager > "Sur l'écran d'accueil".
+### Étape 2 : Installation sur Android / iOS
+1. Ouvrez l'URL dans **Chrome** (Android) ou **Safari** (iOS).
+2. **Sur Android** : Cliquez sur les 3 points en haut à droite > **"Installer l'application"**.
+3. **Sur iOS** : Cliquez sur l'icône de partage (carré avec flèche) > **"Sur l'écran d'accueil"**.
+4. L'application est maintenant sur votre écran d'accueil et fonctionne hors-ligne !
 
-## 🛠️ Stack Technique
-- React 19
-- Tailwind CSS
-- TypeScript
-- Recharts (pour les graphiques)
+## ✨ Points Forts
+- **Vie Privée** : Aucune donnée ne quitte votre téléphone (stockage local uniquement).
+- **Batterie** : Utilise l'accéléromètre, beaucoup moins gourmand que le GPS.
+- **Offline** : Fonctionne sans internet une fois installée.
+- **Zéro Pub** : Une expérience pure et zen.
+
+## 🛠️ Technique
+- **Framework** : React 19 (via esm.sh pour un déploiement sans build complexe).
+- **Style** : Tailwind CSS.
+- **Capteurs** : API `DeviceMotionEvent` pour le comptage de pas.
