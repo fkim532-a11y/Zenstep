@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">pedometre Pro</string>
+    <string name="widget_description">Affiche le nombre de pas du jour</string>
+</resources>
