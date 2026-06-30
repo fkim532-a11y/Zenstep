@@ -40,6 +40,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             val context = LocalContext.current
             var permissionsGranted by remember { mutableStateOf(checkPermissions(context)) }
+            val prefs = remember { context.getSharedPreferences("user_settings", Context.MODE_PRIVATE) }
+            var showMiuiDialog by remember {
+                mutableStateOf(
+                    Build.MANUFACTURER.lowercase() == "xiaomi" &&
+                    !prefs.getBoolean("miui_dialog_shown", false)
+                )
+            }
 
             val permLauncher = rememberLauncherForActivityResult(
                 ActivityResultContracts.RequestMultiplePermissions()
@@ -74,6 +81,33 @@ class MainActivity : ComponentActivity() {
                 background = Color(0xFF121212),
                 surface = Color(0xFF1E1E1E)
             )) {
+                if (showMiuiDialog && permissionsGranted) {
+                    AlertDialog(
+                        onDismissRequest = {},
+                        containerColor = Color(0xFF1E1E1E),
+                        title = {
+                            Text("Xiaomi détecté", color = Color.White, fontWeight = FontWeight.Bold)
+                        },
+                        text = {
+                            Text(
+                                "Pour que le podomètre fonctionne quand l'app est fermée, activez ces 2 réglages :\n\n" +
+                                "Paramètres › Applications › Gérer les apps › Mon Podomètre\n\n" +
+                                "• Économiseur de batterie → Aucune restriction\n" +
+                                "• Démarrage automatique → Activer",
+                                color = Color.Gray
+                            )
+                        },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                prefs.edit().putBoolean("miui_dialog_shown", true).apply()
+                                showMiuiDialog = false
+                            }) {
+                                Text("Compris", color = Color(0xFF00E676), fontWeight = FontWeight.Bold)
+                            }
+                        }
+                    )
+                }
+
                 if (!permissionsGranted) {
                     PermissionScreen { permLauncher.launch(requiredPermissions()) }
                 } else {
