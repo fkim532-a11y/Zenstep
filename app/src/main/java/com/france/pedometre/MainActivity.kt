@@ -91,9 +91,8 @@ class MainActivity : ComponentActivity() {
                         text = {
                             Text(
                                 "Pour que le podomètre fonctionne quand l'app est fermée, activez ces 2 réglages :\n\n" +
-                                "Paramètres › Applications › Gérer les apps › Mon Podomètre\n\n" +
-                                "• Économiseur de batterie → Aucune restriction\n" +
-                                "• Démarrage automatique → Activer",
+                                "• Paramètres › Applications › Mon Podomètre › Économiseur de batterie → Aucune restriction\n\n" +
+                                "• Dans la recherche des Paramètres, tapez \"démarrage automatique\" et activez Mon Podomètre",
                                 color = Color.Gray
                             )
                         },
